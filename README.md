@@ -2,6 +2,11 @@
 
 ## List of images
 
-| Name | Source | Version |
-| ---- | ------ | ------- |
-| [cgit](./cgit) | <https://git.zx2c4.com/cgit> | `v1.2.3` |
+| Name                   | Version  | Notes                                                                                        |
+| ---------------------- | -------- | -------------------------------------------------------------------------------------------- |
+| [cgit](./cgit)         | `v1.2.3` | Source code available at <https://git.zx2c4.com/cgit>                                        |
+| [netshoot](./netshoot) | `latest` | Inspired by [nicolaka/netshoot](https://github.com/nicolaka/netshoot/blob/master/Dockerfile) |
+
+## Acknowledgements
+
+- <https://github.com/nicolaka/netshoot>
