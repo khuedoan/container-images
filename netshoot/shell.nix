@@ -11,6 +11,7 @@ pkgs.mkShell {
     jq
     neovim
     openssh
+    speedtest-cli
     termshark
     wget
     yq-go
