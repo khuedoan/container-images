@@ -4,7 +4,7 @@ RUN nix-env -iA \
     nixpkgs.soft-serve \
     nixpkgs.git
 
-ENV SOFT_SERVE_DATA_PATH=/var/lib/soft-serve
+ENV SOFT_SERVE_DATA_PATH=/var/lib/micropaas
 ENV SOFT_SERVE_HTTP_LISTEN_ADDR=:80
 ENV SOFT_SERVE_SSH_LISTEN_ADDR=:22
 
