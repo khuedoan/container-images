@@ -10,6 +10,12 @@ NEW_OBJECT="${3}"
 
 WORKDIR="$(mktemp -d)"
 
+echo "Repository: ${SOFT_SERVE_REPO_NAME}"
+echo "Ref name: ${REF_NAME}"
+echo "Old object: ${OLD_OBJECT}"
+echo "New object: ${NEW_OBJECT}"
+echo "Working directory: ${WORKDIR}"
+
 git worktree add "${WORKDIR}" "${NEW_OBJECT}"
 
 pushd "${WORKDIR}"
@@ -19,6 +25,17 @@ if [ ! -f "flake.nix" ] || [ ! -f "Makefile" ]; then
 else
     nix develop --command \
         make ci REF_NAME="${REF_NAME}" OLD_OBJECT="${OLD_OBJECT}" NEW_OBJECT="${NEW_OBJECT}"
+fi
+
+if [ ! -f "Dockerfile" ]; then
+    echo "Dockerfile not found, skipping container build." >&2
+else
+    export REGISTRY_HOST="${REGISTRY_HOST:-docker.io}"
+
+    # TODO docker login?
+    docker build . \
+        --tag "${REGISTRY_HOST}/${SOFT_SERVE_REPO_NAME}:latest" \
+        --push
 fi
 
 popd
