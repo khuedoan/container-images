@@ -17,10 +17,8 @@ pushd "${WORKDIR}"
 if [ ! -f "flake.nix" ] || [ ! -f "Makefile" ]; then
     echo "flake.nix or Makefile not found, skipping CI." >&2
 else
-    nix develop \
-        --experimental-features 'nix-command flakes' \
-        --log-format bar \
-        --command make ci REF_NAME="${REF_NAME}" OLD_OBJECT="${OLD_OBJECT}" NEW_OBJECT="${NEW_OBJECT}"
+    nix develop --command \
+        make ci REF_NAME="${REF_NAME}" OLD_OBJECT="${OLD_OBJECT}" NEW_OBJECT="${NEW_OBJECT}"
 fi
 
 popd

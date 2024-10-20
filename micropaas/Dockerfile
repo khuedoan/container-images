@@ -1,5 +1,7 @@
 FROM nixos/nix:latest
 
+RUN echo 'experimental-features = flakes nix-command' >> /etc/nix/nix.conf
+
 RUN nix-env -iA \
     nixpkgs.soft-serve \
     nixpkgs.git
