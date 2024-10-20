@@ -9,6 +9,7 @@ OLD_OBJECT="${2}"
 NEW_OBJECT="${3}"
 
 WORKDIR="$(mktemp -d)"
+CACHE_DIR="/tmp/cache/${SOFT_SERVE_REPO_NAME}/${REF_NAME}"
 
 echo "Repository: ${SOFT_SERVE_REPO_NAME}"
 echo "Ref name: ${REF_NAME}"
@@ -23,8 +24,9 @@ pushd "${WORKDIR}"
 if [ ! -f "flake.nix" ] || [ ! -f "Makefile" ]; then
     echo "flake.nix or Makefile not found, skipping CI." >&2
 else
+    mkdir -p "${CACHE_DIR}"
     nix develop --command \
-        make ci REF_NAME="${REF_NAME}" OLD_OBJECT="${OLD_OBJECT}" NEW_OBJECT="${NEW_OBJECT}"
+        make ci REF_NAME="${REF_NAME}" OLD_OBJECT="${OLD_OBJECT}" NEW_OBJECT="${NEW_OBJECT}" CACHE_DIR="${CACHE_DIR}"
 fi
 
 if [ ! -f "Dockerfile" ]; then
