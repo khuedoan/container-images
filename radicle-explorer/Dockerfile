@@ -15,3 +15,5 @@ RUN npm run build
 FROM docker.io/library/caddy
 
 COPY --from=builder /usr/local/src/radicle-explorer/build /usr/share/caddy
+
+COPY Caddyfile /etc/caddy/Caddyfile
