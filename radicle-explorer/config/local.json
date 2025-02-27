@@ -1,0 +1,44 @@
+{
+  "preferredSeeds": [
+    {
+      "hostname": "seed.radicle.xyz",
+      "port": 443,
+      "scheme": "https"
+    },
+    {
+      "hostname": "radicle.horus.khuedoan.com",
+      "port": 443,
+      "scheme": "https"
+    },
+    {
+      "hostname": "radicle.homelab.khuedoan.com",
+      "port": 443,
+      "scheme": "https"
+    },
+    {
+      "hostname": "radicle.homecloud.khuedoan.com",
+      "port": 443,
+      "scheme": "https"
+    },
+    {
+      "hostname": "radicle.mesh.khuedoan.com",
+      "port": 443,
+      "scheme": "https"
+    },
+    {
+      "hostname": "ash.radicle.garden",
+      "port": 443,
+      "scheme": "https"
+    },
+    {
+      "hostname": "seed.radicle.garden",
+      "port": 443,
+      "scheme": "https"
+    },
+    {
+      "hostname": "localhost",
+      "port": 8080,
+      "scheme": "http"
+    }
+  ]
+}
