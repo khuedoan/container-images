@@ -1,7 +1,7 @@
 {
   "preferredSeeds": [
     {
-      "hostname": "radicle.horus.khuedoan.com",
+      "hostname": "radicle.cloudlab.khuedoan.com",
       "port": 443,
       "scheme": "https"
     },
