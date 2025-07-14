@@ -2,4 +2,4 @@
 .PHONY: default
 
 default:
-	docker buildx bake
+	docker bake
