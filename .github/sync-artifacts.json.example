@@ -1,0 +1,9 @@
+{
+  "artifacts": [
+    {
+      "source": "oci://ghcr.io/bank-vaults/helm-charts/vault-operator:1.23.0",
+      "destination": "docker://docker.io/khuedoan/helm-vault-operator:1.23.0",
+      "enabled": true
+    }
+  ]
+}
