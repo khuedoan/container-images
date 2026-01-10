@@ -1,0 +1,29 @@
+name: Sync OCI Artifacts
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/sync-oci-artifacts.yaml'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        include:
+          - source: docker://ghcr.io/bank-vaults/helm-charts/vault-operator:1.23.0
+            destination: docker://docker.io/khuedoan/vault-operator-helm:1.23.0
+    steps:
+      - name: Install Skopeo
+        run: sudo apt-get update && sudo apt-get install -y skopeo
+
+      - name: Sync ${{ matrix.source }} to ${{ matrix.destination }}
+        env:
+          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+        run: skopeo copy "${{ matrix.source }}" "${{ matrix.destination }}" --dest-creds "$REGISTRY_USERNAME:$REGISTRY_PASSWORD" --all
