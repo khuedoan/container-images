@@ -19,11 +19,8 @@ jobs:
       - name: Install Skopeo
         run: sudo apt-get update && sudo apt-get install -y skopeo
 
-      - name: Login to registries
+      - name: Sync ${{ matrix.source }} to ${{ matrix.destination }}
         env:
           REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
-        run: echo "$REGISTRY_PASSWORD" | skopeo login docker.io --username "$REGISTRY_USERNAME" --password-stdin
-
-      - name: Sync ${{ matrix.source }} to ${{ matrix.destination }}
-        run: skopeo copy "${{ matrix.source }}" "${{ matrix.destination }}" --all
+        run: skopeo copy "${{ matrix.source }}" "${{ matrix.destination }}" --dest-creds "$REGISTRY_USERNAME:$REGISTRY_PASSWORD" --all
