@@ -3,10 +3,10 @@ name: Sync OCI Artifacts
 on:
   workflow_dispatch:
   push:
+    branches:
+      - master
     paths:
       - '.github/workflows/sync-oci-artifacts.yaml'
-  schedule:
-    - cron: '0 0 * * *'
 
 jobs:
   sync:
