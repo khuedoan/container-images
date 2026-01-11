@@ -16,8 +16,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - source: oci://ghcr.io/bank-vaults/helm-charts/vault-operator:1.23.0
-            destination: docker://docker.io/khuedoan/helm-vault-operator:1.23.0
+          - source: docker://ghcr.io/bank-vaults/helm-charts/vault-operator:1.23.0
+            destination: docker://docker.io/khuedoan/vault-operator-helm:1.23.0
     steps:
       - name: Install Skopeo
         run: sudo apt-get update && sudo apt-get install -y skopeo
