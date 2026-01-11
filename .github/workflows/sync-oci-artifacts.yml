@@ -23,10 +23,7 @@ jobs:
         env:
           REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
-        run: |
-          if [ -n "$REGISTRY_USERNAME" ] && [ -n "$REGISTRY_PASSWORD" ]; then
-            echo "$REGISTRY_PASSWORD" | skopeo login docker.io --username "$REGISTRY_USERNAME" --password-stdin
-          fi
+        run: echo "$REGISTRY_PASSWORD" | skopeo login docker.io --username "$REGISTRY_USERNAME" --password-stdin
 
       - name: Sync ${{ matrix.source }} to ${{ matrix.destination }}
         run: skopeo copy "${{ matrix.source }}" "${{ matrix.destination }}" --all
