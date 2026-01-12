@@ -20,6 +20,8 @@ jobs:
             destination: docker://docker.io/khuedoan/vault-operator-helm:1.23.0
           - source: docker://ghcr.io/bank-vaults/helm-charts/vault-secrets-webhook:1.22.2
             destination: docker://docker.io/khuedoan/vault-secrets-webhook-helm:1.22.2
+          - source: docker://ghcr.io/bjw-s-labs/helm/app-template:4.6.0
+            destination: docker://docker.io/khuedoan/app-template:4.6.0
     steps:
       - name: Install Skopeo
         run: sudo apt-get update && sudo apt-get install -y skopeo
